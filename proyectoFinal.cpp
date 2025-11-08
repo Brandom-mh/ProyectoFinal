@@ -84,6 +84,11 @@ Texture axoloteTexture;
 Texture piramideTexture;
 Texture arbolAviarioTexture;
 Texture pajaroTexture;
+Texture arbusto1Texture;
+Texture arbusto2Texture;
+Texture arbusto3Texture;
+Texture arbusto4Texture;
+
 
 
 Model Kitt_M;
@@ -115,6 +120,12 @@ Model axolotePataTraseraIzquierda_M;
 
 Model arbolAviario_M;
 Model pajaro_M;
+
+Model arbusto1_M;
+Model arbusto2_M;
+Model arbusto3_M;
+Model arbusto4_M;
+
 
 Skybox skybox;
 
@@ -573,6 +584,15 @@ int main()
 	arbolAviarioTexture.LoadTextureA();
 	pajaroTexture = Texture("Textures/12213_bird_diffuse.jpg");
 	pajaroTexture.LoadTextureA();
+	arbusto1Texture = Texture("Textures/TX_AlexandraPalm_ALB.jpg");
+	arbusto1Texture.LoadTextureA();
+	arbusto2Texture = Texture("Textures/3 leaves_Color.png");
+	arbusto2Texture.LoadTextureA();
+	arbusto3Texture = Texture("Textures/Grass.jpg");
+	arbusto3Texture.LoadTextureA();
+	arbusto4Texture = Texture("Textures/tree2.low_Material_BaseColor.jpg");
+	arbusto4Texture.LoadTextureA();
+
 
 	Arco_M = Model();
 	Arco_M.LoadModel("Models/Arco.fbx");
@@ -622,6 +642,14 @@ int main()
 	arbolAviario_M.LoadModel("Models/arbolAves.fbx");
 	pajaro_M = Model();
 	pajaro_M.LoadModel("Models/pajaro.fbx");
+	arbusto1_M = Model();
+	arbusto1_M.LoadModel("Models/Arbustos/arbusto1.fbx");
+	arbusto2_M = Model();
+	arbusto2_M.LoadModel("Models/Arbustos/arbusto2.fbx");
+	arbusto3_M = Model();
+	arbusto3_M.LoadModel("Models/Arbustos/flor.fbx");
+	arbusto4_M = Model();
+	arbusto4_M.LoadModel("Models/arbol2.fbx");
 
 
 
@@ -856,7 +884,8 @@ int main()
 		Letrero_M.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(26.0, -2.0f, 7.0f));
+		model = glm::translate(model, glm::vec3(38.0, -2.0f, -117.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model;
@@ -1115,6 +1144,39 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pajaroTexture.UseTexture();
 		pajaro_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbusto1Texture.UseTexture();
+		arbusto1_M.RenderModel();
+		
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(10.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbusto2Texture.UseTexture();
+		arbusto2_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbusto3Texture.UseTexture();
+		arbusto3_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(20.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		arbusto4Texture.UseTexture();
+		arbusto4_M.RenderModel();
+
+
 
 
 		glUseProgram(0);
