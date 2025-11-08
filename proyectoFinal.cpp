@@ -1318,3 +1318,4 @@ void inputKeyframes(bool* keys)
 	else reproducirAnimacion = 0;
 }
 
+
